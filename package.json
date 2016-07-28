@@ -10,8 +10,10 @@
   "author": "jitcoder",
   "dependencies": {
     "babel-polyfill": "^6.9.1",
+    "jszip": "^3.0.0",
     "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "react-dom": "^15.1.0",
+    "react-dropzone": "^3.5.3"
   },
   "devDependencies": {
     "babel-core": "^6.9.1",

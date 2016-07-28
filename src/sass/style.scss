@@ -19,7 +19,7 @@ body {
   float: right;
 }
 
-.container {
+.app {
   margin: 10px 0px;
   display:block;
 
@@ -34,28 +34,10 @@ body {
   border-radius: 3px;
 }
 
-.upload-box{
-  margin: auto;
-  width: 600px;
-  height: 600px;
-  box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.upload-box::after {
-  content: "";
-  opacity: 0.2;
-  position: absolute;
-  z-index: -1;
+#lightning{
+  position:absolute;
+  bottom: 0;
   left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background-image: url(/assets/imgs/upload.png);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 /*
 box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);

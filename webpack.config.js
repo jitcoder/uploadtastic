@@ -1,9 +1,9 @@
 const path = require('path');
 // const webpack = require('webpack');
 
-function defineApplication(appPath) {
+function defineApplication(appPath, skipclient) {
   const sources = [];
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production' && !skipclient) {
     sources.push('webpack-dev-server/client?http://localhost:8080');
     sources.push('webpack/hot/dev-server');
   }
@@ -15,7 +15,9 @@ function defineApplication(appPath) {
 
 module.exports = {
   entry: {
-    index: defineApplication('apps/index')
+    index: defineApplication('apps/index', false),
+    indexww: defineApplication('apps/index-ww', false),
+    uploadservice: defineApplication('services/upload-service', true)
   },
   output: {
     publicPath: '/assets/js',

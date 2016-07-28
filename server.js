@@ -2,9 +2,10 @@ const express = require('express');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const config = require('./webpack.config.js');
+const fs = require('fs');
 
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
-//config.plugins.push(new webpack.NoErrorsPlugin());
+// config.plugins.push(new webpack.NoErrorsPlugin());
 
 process.env.NODE_ENV = 'development';
 
@@ -29,14 +30,14 @@ new WebpackDevServer(webpack(config), {
 
 const app = express();
 
-app.get('/api', (req, res) => {
-  res.json({
-    shouts: [
-      'Hello World!',
-      'This is React and Webpack...',
-      'They make development fun',
-      'Another shout'
-    ]
+app.post('/api/upload', (req, res) => {
+  req.on('readable', () => {
+    const zipstream = fs.createWriteStream('test.zip');
+    req.pipe(zipstream);
+  });
+
+  req.on('end', () => {
+    res.json('done');
   });
 });
 
