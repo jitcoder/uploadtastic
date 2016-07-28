@@ -31,14 +31,12 @@ new WebpackDevServer(webpack(config), {
 const app = express();
 
 app.post('/api/upload', (req, res) => {
-  req.on('readable', () => {
-    const zipstream = fs.createWriteStream('test.zip');
-    req.pipe(zipstream);
-  });
-
   req.on('end', () => {
     res.json('done');
   });
+
+  const zipstream = fs.createWriteStream('test.zip');
+  req.pipe(zipstream);
 });
 
 app.listen(3000, '0.0.0.0', (err) => {

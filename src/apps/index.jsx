@@ -30,7 +30,7 @@ class Index extends React.Component {
     files.forEach((f) => {
       this.zip.file(f.name, f);
     });
-    this.zip.generateAsync({ type: 'blob' })
+    this.zip.generateAsync({ type: 'blob', compression: 'DEFLATE' })
       .then((blob) => {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', '/api/upload', true);

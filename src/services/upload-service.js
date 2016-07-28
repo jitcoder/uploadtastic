@@ -8,7 +8,7 @@ self.addEventListener('message', (e) => {
   files.forEach((f) => {
     zip.file(f.name, f);
   });
-  zip.generateAsync({ type: 'blob' })
+  zip.generateAsync({ type: 'blob', compression: 'DEFLATE' })
     .then((blob) => {
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = () => {
